@@ -8,3 +8,5 @@ This project demonstrates the UI of Calendar scheduling and slot allotment featu
 4. Run the project on Android or iOS
 
 ![alt text](./schedule.png)
+
+![alt text](./calendar.png)
