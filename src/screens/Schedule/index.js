@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, FlatList, Alert } from 'react-native';
 import { styles } from './styles';
 import { locales } from '../../../config/locales';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import moment from 'moment';
 
 const Schedule = props => {
@@ -17,6 +18,19 @@ const Schedule = props => {
         { day: 'Sun', slots: [{}] }
     ];
     const [days, setDays] = useState(dd);
+
+    useEffect(() => {
+        getDaysFromAsyncStore()
+    }, [])
+
+    const getDaysFromAsyncStore = async () => {
+        const scheduleRes = await AsyncStorage.getItem('scheduleDays')
+        if (scheduleRes) {
+            // console.log('scheduleRes', JSON.parse(scheduleRes))
+            setDays(JSON.parse(scheduleRes))
+        }
+    }
+
     const [isStartTimePickerVisible, setIsStartTimePickerVisible] = useState(false);
     const [isEndTimePickerVisible, setIsEndTimePickerVisible] = useState(false);
     const [selectedSlotIndex, setSelectedSlotIndex] = useState(0);
@@ -27,11 +41,13 @@ const Schedule = props => {
         // console.log('moment', moment(time).format('LT'))
         days[selectedIndex].slots[selectedSlotIndex].startTime = moment(time).format('LT')
         setDays([...days])
+        AsyncStorage.setItem('scheduleDays', JSON.stringify(days))
         hideDatePicker();
     }
     const handleConfirmEndDate = (time) => {
         days[selectedIndex].slots[selectedSlotIndex].endTime = moment(time).format('LT')
         setDays([...days])
+        AsyncStorage.setItem('scheduleDays', JSON.stringify(days))
         hideDatePicker();
     }
     const hideDatePicker = () => {
@@ -54,6 +70,7 @@ const Schedule = props => {
                                 days[index].slots.push({})
                             }
                             setDays([...days])
+                            AsyncStorage.setItem('scheduleDays', JSON.stringify(days))
                         }
                     },
                     {
@@ -89,6 +106,7 @@ const Schedule = props => {
                                 days[index].slots.push({})
                             }
                             setDays([...days])
+                            AsyncStorage.setItem('scheduleDays', JSON.stringify(days))
                         }
                     },
                     {
@@ -153,6 +171,7 @@ const Schedule = props => {
                                         onPress={() => {
                                             days[index].slots.push({})
                                             setDays([...days])
+                                            AsyncStorage.setItem('scheduleDays', JSON.stringify(days))
                                         }}
                                         style={styles.plus} />}
                             </View>

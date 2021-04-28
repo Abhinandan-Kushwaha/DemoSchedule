@@ -5,5 +5,10 @@ export const locales = {
     createEditSchedule: 'Create / Edit schedule',
     viewCalendar: 'View Calendar',
     selectStart: 'Select start time',
-    selectEnd: 'Select end time'
+    selectEnd: 'Select end time',
+    inactiveSlot: 'Inactive slot',
+    bookAppointment: 'Book an appointment',
+    cancel: 'Cancel',
+    confirm: 'Confirm',
+    viewSlots: 'View slots'
 }

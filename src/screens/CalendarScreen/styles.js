@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../../config/colors';
 
 const { height, width } = Dimensions.get('window');
 
@@ -6,6 +7,11 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'black'
+    },
+    containerGray: {
+        flex: 1,
+        backgroundColor: 'black',
+        opacity: 0.3
     },
     modalContainer: {
         backgroundColor: 'black',
@@ -25,7 +31,8 @@ export const styles = StyleSheet.create({
     titleTextStyle: {
         fontSize: 16,
         letterSpacing: -1,
-        color: 'white'
+        color: 'white',
+        fontWeight: 'bold'
     },
     row: {
         borderBottomWidth: StyleSheet.hairlineWidth,
@@ -91,7 +98,7 @@ export const styles = StyleSheet.create({
     padding10: {
         padding: 10
     },
-    emptyDate: {
+    slot: {
         backgroundColor: 'black',
         height: 15,
         flex: 1,
@@ -177,13 +184,13 @@ export const styles = StyleSheet.create({
     },
     deleteButton: {
         backgroundColor: '#ff533b',
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         paddingVertical: 4,
         borderRadius: 10
     },
-    cancelButton: {
-        backgroundColor: '#736f74',
-        paddingHorizontal: 20,
+    viewButton: {
+        backgroundColor: colors.white,
+        paddingHorizontal: 10,
         paddingVertical: 4,
         borderRadius: 10
     },
@@ -197,8 +204,8 @@ export const styles = StyleSheet.create({
         color: 'white',
         fontSize: 14
     },
-    buttonTextGrey: {
-        color: '#c4c0c5',
+    buttonTextBlack: {
+        color: colors.black,
         fontSize: 14
     },
     weekDaysContainer: {

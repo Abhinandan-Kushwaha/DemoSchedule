@@ -9,7 +9,7 @@ const Doctor = props => {
         props.navigation.navigate('Schedule')
     }
     const onCalendarPress = () => {
-        props.navigation.navigate('Calendar')
+        props.navigation.navigate('Calendar', { isDoctor: true })
     }
     return (
         <View style={styles.container}>
