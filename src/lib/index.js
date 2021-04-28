@@ -61,6 +61,43 @@ export const timeToString = (time) => {
         .split('T')[0];
 };
 
+export const get24Hour = time => {
+    if (!time) return '';
+    time = time.trim()
+    if (time.endsWith('PM')) {
+        time = time.substring(0, time.indexOf('PM') - 1)
+        if (time.indexOf(':') !== -1) {
+            let times = time.split(':')
+            // time = ((parseInt(times[0]) + 12) % 24) + ':' + (times[1])
+            return { hrs: (parseInt(times[0]) + 12) % 24, mins: parseInt(times[1]) }
+        }
+        time = (parseInt(time) + 12) % 24
+        return { hrs: time, mins: 0 }
+    }
+    if (time.indexOf(':') !== -1) {
+        let times = (time.substring(0, time.indexOf('AM') - 1)).split(':')
+        return { hrs: parseInt(times[0]), mins: parseInt(times[1]) }
+    }
+    time = time.substring(0, time.indexOf('AM') - 1)
+    return { hrs: parseInt(time), mins: 0 }
+}
+
+export const deepCopy = obj => {
+    let newObj = {};
+    if (Array.isArray(obj)) {
+        newObj = []
+    }
+
+    Object.keys(obj).map((keyItem) => {
+        if (typeof obj[keyItem] === "object") {
+            newObj[keyItem] = deepCopy(obj[keyItem]);
+        } else {
+            newObj[keyItem] = obj[keyItem];
+        }
+    });
+    return newObj;
+}
+
 export const getDayNumber = (day) => {
     switch (day) {
         case 'Sun':

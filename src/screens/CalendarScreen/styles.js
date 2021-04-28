@@ -98,11 +98,21 @@ export const styles = StyleSheet.create({
     padding10: {
         padding: 10
     },
+    patientContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        marginVertical: 4,
+        paddingVertical: 6,
+        borderWidth: StyleSheet.hairlineWidth,
+        backgroundColor: colors.lightBlack,
+        borderRadius: 6,
+        borderColor: 'gray'
+    },
     slot: {
         backgroundColor: 'black',
-        height: 15,
+        // height: 15,
         flex: 1,
-        height: 80,
+        minHeight: 80,
         marginVertical: 5,
         marginRight: 10,
         borderRadius: 5,

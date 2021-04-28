@@ -10,5 +10,8 @@ export const locales = {
     bookAppointment: 'Book an appointment',
     cancel: 'Cancel',
     confirm: 'Confirm',
-    viewSlots: 'View slots'
+    back: 'Back',
+    viewSlots: 'View slots',
+    doctorsSlotsOn: 'Doctor\'s slots on',
+    yourSlotsOn: 'Your slots on'
 }

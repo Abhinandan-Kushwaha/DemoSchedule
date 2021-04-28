@@ -7,8 +7,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 Icon.loadFont();
 
 const Home = props => {
-    const onButtonPress = () => {
-        props.navigation.navigate('Calendar')
+    const onButtonPress = (patient) => {
+        props.navigation.navigate('Calendar', { patientName: patient })
     }
     const onButtonPressDoctor = () => {
         props.navigation.navigate('Doctor')
@@ -25,17 +25,17 @@ const Home = props => {
             </View>
             <View style={styles.container}>
                 <TouchableOpacity
-                    onPress={onButtonPress}
+                    onPress={() => onButtonPress('Patient 1')}
                     style={styles.button}>
                     <Text style={styles.textStyle}>{locales.loginAsPatient + ' 1'}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={onButtonPress}
+                    onPress={() => onButtonPress('Patient 2')}
                     style={styles.button}>
                     <Text style={styles.textStyle}>{locales.loginAsPatient + ' 2'}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={onButtonPress}
+                    onPress={() => onButtonPress('Patient 3')}
                     style={styles.button}>
                     <Text style={styles.textStyle}>{locales.loginAsPatient + ' 3'}</Text>
                 </TouchableOpacity>
